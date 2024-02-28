@@ -147,7 +147,7 @@ export const signIn = async (req, res, next) => {
     },
     process.env.LOGIN_SIGNATURE,
     {
-      expiresIn: "1h",
+      expiresIn: "1d",
     }
   );
 
@@ -242,12 +242,19 @@ export const getUserProfile = async (req, res, next) => {
 
 //============================= upload Image for user =============================//
 /**
- *
+ * * destructure data from authUser
+ * * check user
+ * * check if user not uploade image
+ * * folder Id
+ * * upload image
+ * * save changes
+ * * response successfully
  */
 export const uploadImage = async (req, res, next) => {
   // * destructure data from authUser
   const { _id } = req.authUser;
 
+  // * check user
   const user = await User.findById(_id);
   if (!user) {
     return next("user not found", { cause: 404 });

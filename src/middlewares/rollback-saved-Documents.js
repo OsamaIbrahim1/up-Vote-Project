@@ -1,4 +1,3 @@
-
 export const rollbackSavedDocuments = async (req, res, next) => {
   console.log("rollbackSavedDocuments middleware");
   if (req.savedDocuments) {

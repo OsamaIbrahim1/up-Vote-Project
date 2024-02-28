@@ -25,9 +25,9 @@ export const auth = (accessRoles) => {
         "username email role"
       );
       // loggdInUser ROle
-
       if (!findUser)
         return next(new Error("please signUp first", { cause: 404 }));
+
       // authorization check
       if (!accessRoles.includes(findUser.role))
         return next(

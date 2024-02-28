@@ -61,9 +61,6 @@ router.post(
   "/uploadImage",
   auth([systemRoles.USER, systemRoles.ADMIN]),
   multerMiddleHost({ extensions: allowedExtensions.image }).single("image"),
-  // (req, res, next) => {
-  //   console.log("object");
-  // },
   expressAsyncHandler(userController.uploadImage)
 );
 
